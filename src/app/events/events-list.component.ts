@@ -4,12 +4,12 @@ import { Component, OnInit } from '@angular/core';
   selector: 'events-list',
   // templateUrl: './events-list.component.html'
   template: `
-    <div>
-      <h1>Upcoming Angular Events</h1>
-      <hr>
-      <events-thumbnail [event]="event1"></events-thumbnail>
-    </div>
-  `
+      <div>
+        <h1>Upcoming Angular Events</h1>
+        <hr>
+        <events-thumbnail [event]="event1"></events-thumbnail>
+      </div>
+    `
 })
 export class EventsListComponent {
   event1 = {
