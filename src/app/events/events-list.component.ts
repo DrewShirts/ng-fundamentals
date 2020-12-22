@@ -1,6 +1,6 @@
 import {toBase64String} from '@angular/compiler/src/output/source_map';
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../shared/event.service';
+import { EventService } from './shared/event.service';
 import { ToastrService } from '../common/toastr.service';
 import { ActivatedRoute } from '@angular/router';
 
