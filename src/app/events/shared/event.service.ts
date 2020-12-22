@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {EventManager} from '@angular/platform-browser';
 import { Observable, Subject } from 'rxjs';
 import { IEvent } from './event.model';
 
@@ -12,6 +13,13 @@ export class EventService {
     }, 100);
     return subject;
   }
+
+  saveEvent(event) {
+    event.id = 999;
+    event.sessions = [];
+    EVENTS.push(event);
+  }
+
   getEvent(id:number):IEvent {
     return EVENTS.find(event => event.id === id);
   }
