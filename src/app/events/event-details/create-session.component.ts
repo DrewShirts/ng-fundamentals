@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {controlNameBinding} from '@angular/forms/src/directives/reactive_directives/form_control_name';
 
-import { ISession } from '../shared/index';
+import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
   templateUrl: './create-session.component.html',
@@ -28,7 +28,7 @@ export class CreateSessionComponent implements OnInit {
     this.presenter = new FormControl('', Validators.required);
     this.duration = new FormControl('', Validators.required);
     this.level = new FormControl('', Validators.required);
-    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), this.restrictedWords(['foo', 'bar'])]);
+    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), restrictedWords(['foo', 'bar'])]);
 
     this.newSessionForm = new FormGroup({
       name: this.name,
@@ -37,21 +37,6 @@ export class CreateSessionComponent implements OnInit {
       level: this.level,
       abstract: this.abstract
     });
-  }
-
-  private restrictedWords(words) {
-    return (control: FormControl) : {[ key : string ] : any } => {
-      if (!words) {
-        return null;
-      }
-
-      var invalidWords = words
-        .map(word => control.value.includes(word) ? word : null)
-        .filter(word => word !== null);
-      return invalidWords && invalidWords.length > 0
-        ? { 'restrictedWords' : invalidWords.join(', ') }
-        : null;
-    }
   }
 
   saveSession(formValues: any) {
