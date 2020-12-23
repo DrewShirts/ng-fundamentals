@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {controlNameBinding} from '@angular/forms/src/directives/reactive_directives/form_control_name';
 
 import { ISession } from '../shared/index';
 
@@ -27,7 +28,7 @@ export class CreateSessionComponent implements OnInit {
     this.presenter = new FormControl('', Validators.required);
     this.duration = new FormControl('', Validators.required);
     this.level = new FormControl('', Validators.required);
-    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400)]);
+    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400), this.restrictedWords;
 
     this.newSessionForm = new FormGroup({
       name: this.name,
@@ -36,6 +37,10 @@ export class CreateSessionComponent implements OnInit {
       level: this.level,
       abstract: this.abstract
     });
+  }
+
+  private restrictedWords(control: FormControl) : {[ key : string ] : any } {
+    return control.value.includes('foo') ? { restrictedWords : 'foo' } : null;
   }
 
   saveSession(formValues: any) {
