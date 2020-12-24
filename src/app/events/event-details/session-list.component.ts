@@ -8,11 +8,15 @@ import { ISession } from '../shared';
 export class SessionListComponent implements OnChanges {
   @Input() filterBy:string;
   @Input() sessions:ISession[];
+  @Input() sortBy: string;
   visibleSessions:ISession[] = [];
 
   ngOnChanges() {
     if (this.sessions) {
       this.filterSessions(this.filterBy);
+      this.sortBy === 'name'
+        ? this.visibleSessions.sort(sortByNameAsc)
+        : this.visibleSessions.sort(sortByVotesDesc);
     }
   }
 
@@ -26,4 +30,19 @@ export class SessionListComponent implements OnChanges {
       });
     }
   }
+
+}
+
+function sortByNameAsc(s1: ISession, s2: ISession) {
+  if (s1.name > s2.name) {
+    return 1;
+  } else if (s1.name === s2.name) {
+    return 0;
+  } else {
+    return -1;
+  }
+}
+
+function sortByVotesDesc(s1: ISession, s2: ISession) {
+  return s2.voters.length - s1.voters.length;
 }
