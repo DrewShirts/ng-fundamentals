@@ -15,11 +15,9 @@ export class EventService {
       .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
-    }
+  getEvent(id:number):Observable<IEvent> {
+    return this.http.get<IEvent>('/api/events/' + id)
+      .pipe(catchError(this.handleError<IEvent>('getEvent')));
   }
 
   saveEvent(event:IEvent) {
@@ -31,10 +29,6 @@ export class EventService {
   updateEvent(event:IEvent) {
     let index:number = EVENTS.findIndex(x => x.id === event.id);
     EVENTS[index] = event;
-  }
-
-  getEvent(id:number):IEvent {
-    return EVENTS.find(event => event.id === id);
   }
 
   searchSessions(searchTerm: string) {
@@ -56,6 +50,13 @@ export class EventService {
       emitter.emit(results);
     }, 100);
     return emitter;
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    }
   }
 }
 
