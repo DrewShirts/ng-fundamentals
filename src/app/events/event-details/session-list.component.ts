@@ -8,10 +8,10 @@ import { VoterService } from './voter.service';
   templateUrl: './session-list.component.html',
 })
 export class SessionListComponent implements OnChanges {
-  @Input() filterBy:string;
-  @Input() sessions:ISession[];
+  @Input() filterBy: string;
+  @Input() sessions: ISession[];
   @Input() sortBy: string;
-  visibleSessions:ISession[] = [];
+  visibleSessions: ISession[] = [];
 
   constructor(public auth: AuthService, private voterService: VoterService) {}
 
