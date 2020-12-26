@@ -14,8 +14,8 @@ import {
   CreateSessionComponent,
   UpvoteComponent,
   VoterService,
-  DurationPipe
-} from './events/index';
+  LocationValidator,
+  DurationPipe } from './events/index';
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 import {
@@ -24,8 +24,7 @@ import {
   Toastr,
   CollapsibleWellComponent,
   SimpleModalComponent,
-  ModalTriggerDirective
-} from './common/index';
+  ModalTriggerDirective } from './common/index';
 import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
@@ -55,6 +54,7 @@ let jQuery = window['$'];
     SimpleModalComponent,
     ModalTriggerDirective,
     UpvoteComponent,
+    LocationValidator,
     DurationPipe
   ],
   providers: [
