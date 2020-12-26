@@ -13,7 +13,7 @@ export class SessionListComponent implements OnChanges {
   @Input() sortBy: string;
   visibleSessions:ISession[] = [];
 
-  constructor(private auth: AuthService, private voterService: VoterService) {}
+  constructor(public auth: AuthService, private voterService: VoterService) {}
 
   ngOnChanges() {
     if (this.sessions) {
@@ -26,7 +26,7 @@ export class SessionListComponent implements OnChanges {
 
   toggleVote(session: ISession) {
     if (this.userHasVoted(session)) {
-      this.voterService.deleteVoter(session, this.auth.currentUser.userName); 
+      this.voterService.deleteVoter(session, this.auth.currentUser.userName);
     } else {
       this.voterService.addVoter(session, this.auth.currentUser.userName);
     }
