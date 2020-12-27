@@ -19,7 +19,8 @@
           </a>
           <ul class="dropdown-menu">
             <li >
-              <a href="">Angular Connect</a>
+              <a *ngFor="let event of allEvents"
+              [routerLink]="['/events', event.id]">{{ event.name }}</a>
             </li>
           </ul>
         </li>
