@@ -41,7 +41,7 @@ export class SessionListComponent implements OnChanges {
     return this.voterService.userHasVoted(session, this.auth.currentUser.userName);
   }
 
-  filterSessions(filter) {
+  filterSessions(filter: string) {
     if (filter === 'all') {
       // slice this way makes a new copy of the sessions object in visibleSessions
       this.visibleSessions = this.sessions.slice(0);

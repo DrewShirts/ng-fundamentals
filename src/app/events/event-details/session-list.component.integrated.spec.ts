@@ -16,11 +16,11 @@ describe('SessionListComponent', () => {
     debugEL: DebugElement;
 
   beforeEach(async(() => {
-    let mockAuthService = {
+    const mockAuthService = {
       isAuthenticated: () => true,
       currentUser: { userName: 'Joe' }
     };
-    let mockVoterService = {
+    const mockVoterService = {
       userHasVoted: () => true
     };
 

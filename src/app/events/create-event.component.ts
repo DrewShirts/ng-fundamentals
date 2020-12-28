@@ -14,9 +14,9 @@ import { IEvent, EventService } from './shared/index';
   `]
 })
 export class CreateEventComponent {
-  newEvent:IEvent;
-  isDirty:boolean = true;
-  constructor(private router: Router, private eventService:EventService) {}
+  newEvent: IEvent;
+  isDirty = true;
+  constructor(private router: Router, private eventService: EventService) {}
 
   saveEvent(formValues) {
     this.eventService.saveEvent(formValues).subscribe(() => {

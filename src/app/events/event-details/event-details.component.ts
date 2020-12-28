@@ -14,10 +14,10 @@ import { IEvent, ISession } from '../shared/event.model';
 export class EventDetailsComponent implements OnInit {
   event: IEvent;
   addMode: boolean;
-  filterBy: string = 'all';
-  sortBy: string = 'votes';
+  filterBy = 'all';
+  sortBy = 'votes';
 
-  constructor(private eventService:EventService, private route:ActivatedRoute) {}
+  constructor(private eventService: EventService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.data.forEach((data) => {
@@ -30,7 +30,7 @@ export class EventDetailsComponent implements OnInit {
     this.addMode = true;
   }
 
-  saveNewSession(session:ISession) {
+  saveNewSession(session: ISession) {
     const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id));
     session.id = nextId + 1;
     this.event.sessions.push(session);

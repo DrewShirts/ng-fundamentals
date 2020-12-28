@@ -31,8 +31,8 @@ import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { SessionListComponent } from './events/event-details/session-list.component';
 
-let toastr:Toastr = window['toastr'];
-let jQuery = window['$'];
+const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
 
 @NgModule({
   imports: [

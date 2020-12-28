@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core'
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -16,12 +16,12 @@ import { TOASTR_TOKEN, Toastr } from '../common/toastr.service';
   `]
 })
 export class ProfileComponent implements OnInit {
-  profileForm:FormGroup;
-  private firstName:FormControl;
-  private lastName:FormControl;
+  profileForm: FormGroup;
+  private firstName: FormControl;
+  private lastName: FormControl;
 
-  constructor(private authService:AuthService,
-    private router:Router,
+  constructor(private authService: AuthService,
+    private router: Router,
     @Inject(TOASTR_TOKEN) private toastr: Toastr) {}
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
   logout() {
     this.authService.logout().subscribe(() => {
       this.router.navigate(['/user/login']);
-    })
+    });
   }
 
   cancel() {
